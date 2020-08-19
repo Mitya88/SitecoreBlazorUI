@@ -1,0 +1,12 @@
+﻿<div class="alert alert-@Variant" role="alert"  >
+    <i class="si message-bar-icon"></i><div class="message-bar-body"><span class="text-truncate" scalerttext="">@Text</span></div>
+  
+    <button aria-label="Close" class="message-bar-close ng-star-inserted" type="button"><ScIcon Icon="dialog_close"/></button>
+</div>
+@code {
+    [Parameter]
+    public string Variant { get; set; }
+
+    [Parameter]
+    public string Text { get; set; }
+}

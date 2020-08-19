@@ -1,0 +1,21 @@
+﻿<i aria-hidden="true" class="@CssClass" title="@Title"></i>
+@code {
+    [Parameter]
+    public string Title { get; set; }
+
+    [Parameter]
+    public string Size { get; set; }
+
+    [Parameter]
+    public string Icon { get; set; }
+
+    private string CssClass { get; set; }
+
+    private string Prefix = "si";
+
+    protected override void OnInitialized()
+    {
+        base.OnInitialized();
+        this.CssClass = Prefix + " " + Prefix + "-" + this.Icon + " " + this.Prefix + "-" + this.Size;
+    }
+}

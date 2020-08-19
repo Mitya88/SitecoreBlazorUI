@@ -1,0 +1,41 @@
+﻿@page "/samples/buttonpage"
+@inject IJSRuntime JSRuntime;
+<ScApplicationHeader Text="SPEAK components in Blazor">
+    <h5 class="basic-white">Buttons</h5>
+</ScApplicationHeader>
+<div class="page-content-section">
+    <div class="page-content">
+        <article class="p-4">
+            <div class="card mb-3 p-4">
+                <div class="card-block">
+                    <h4 class="card-title">Buttons</h4>
+                    <ScButton ButtonType="primary" Text="Primary" OnClickCallback="ClickTest" />
+                    <ScButton ButtonType="secondary" Text="Secondary" />
+                    <ScButton ButtonType="info" Text="Info" />
+                    <ScButton ButtonType="link" Text="Link" />
+                    <ScButton ButtonType="chromeless" Text="Chromeless" />
+                    <ScBackButton />
+                </div>
+            </div>
+            <div class="card mb-3 p-4">               
+                <div class="card-block">
+                    <h4 class="card-title">Buttons in group</h4>
+                    <ScButtonGroup>
+                        <ScButton ButtonType="primary" Text="Primary 1" OnClickCallback="ClickTest" />
+                        <ScButton ButtonType="primary" Text="Primary 2" OnClickCallback="ClickTest" />
+                        <ScButton ButtonType="primary" Text="Primary 3" OnClickCallback="ClickTest" />
+                    </ScButtonGroup>
+                </div>
+            </div>
+
+        </article>
+    </div>
+    <aside></aside>
+</div>
+
+@code {
+   private async Task  ClickTest()
+    {
+        await JSRuntime.InvokeAsync<object>("alert", "Hello!");
+    }
+}

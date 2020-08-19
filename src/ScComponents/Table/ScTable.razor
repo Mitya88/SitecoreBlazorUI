@@ -1,0 +1,8 @@
+﻿<table class="table table-striped table-hover">
+    @ChildContent
+</table>
+
+@code {
+    [Parameter]
+    public RenderFragment ChildContent { get; set; }
+}

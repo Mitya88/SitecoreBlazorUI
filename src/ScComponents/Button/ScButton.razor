@@ -1,0 +1,15 @@
+﻿<button class="btn btn-@ButtonType"  @onclick="OnClickCallback">@Text</button>
+
+@code {
+
+    [Parameter]
+    public string ButtonType { get; set; }
+
+    [Parameter]
+    public string Text { get; set; }
+
+    [Parameter] public Action Click { get; set; }
+
+    [Parameter]
+    public EventCallback<MouseEventArgs> OnClickCallback { get; set; }
+}

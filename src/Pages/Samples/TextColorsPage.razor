@@ -1,0 +1,33 @@
+﻿@page "/samples/textcolorspage"
+
+<ScApplicationHeader Text="SPEAK components in Blazor">
+    <h5 class="basic-white">Background colors</h5>
+</ScApplicationHeader>
+<article class="p-4">
+    <div class="card mb-3 p-4">
+        <div class="card-block">
+            <h4 class="card-title">Text Colors</h4>
+        </div>
+    </div>
+    @foreach (var cssClass in textClasses)
+    {<div class="card mb-3 p-1 @cssClass @invertBackgroundColor(cssClass)">
+            <div class="card-block">
+                <h4 class="card-title">@cssClass</h4>
+            </div>
+        </div>
+    }
+
+</article>
+@code {
+    private List<string> textClasses = new List<string> { "main-xxx-dark", "main-xx-dark", "main-x-dark", "main-dark ", "main-default", "main-light ", "main-x-light", "main-xx-light", "main-xxx-light", "primary-xxx-dark ", "primary-xx-dark ", "primary-x-dark ", "primary-dark", "primary-default", "primary-light", "primary-x-light", "primary-xx-light ", "primary-xxx-light ", "basic-xxx-dark", "basic-xx-dark ", "basic-x-dark ", "basic-dark ", "basic-default ", "basic-light", "basic-x-light", "basic-xx-light ", "basic-xxx-light", "basic-black", "basic-white ", "sky-xxx-dark ", "sky-xx-dark ", "sky-x-dark ", "sky-dark ", "sky-default", "sky-light", "sky-x-light", "sky-xx-light", "sky-xxx-light", "grass-xxx-dark", "grass-xx-dark ", "grass-x-dark", "grass-dark ", "grass-default", "grass-light ", "grass-x-light", "grass-xx-light", "grass-xxx-light", "banana-xxx-dark ", "banana-xx-dark ", "banana-x-dark", "banana-dark ", "banana-default", "banana-light ", "banana-x-light", "banana-xx-light", "banana-xxx-light", "carrot-xxx-dark ", "carrot-xx-dark ", "carrot-x-dark ", "carrot-dark ", "carrot-default", "carrot-light", "carrot-x-light ", "carrot-xx-light ", "carrot-xxx-light ", "tomato-xxx-dark ", "tomato-xx-dark ", "tomato-x-dark ", "tomato-dark ", "tomato-default", "tomato-light ", "tomato-x-light", "tomato-xx-light", "tomato-xxx-light", "eggplant-xxx-dark", "eggplant-xx-dark ", "eggplant-x-dark ", "eggplant-dark ", "eggplant-default", "eggplant-light ", "eggplant-x-light", "eggplant-xx-light", "eggplant-xxx-light", "sand-xxx-dark ", "sand-xx-dark ", "sand-x-dark ", "sand-dark ", "sand-default", "sand-light ", "sand-x-light", "sand-xx-light ", "sand-xxx-light", "wood-xxx-dark ", "wood-xx-dark ", "wood-x-dark ", "wood-dark", "wood-default", "wood-light ", "wood-x-light", "wood-xx-light", "wood-xxx-light", "steel-xxx-dark ", "steel-xx-dark ", "steel-x-dark ", "steel-dark ", "steel-default", "steel-light ", "steel-x-light", "steel-xx-light", "steel-xxx-light" };
+
+
+    private string invertBackgroundColor(string background)
+    {
+        if (background.IndexOf("x-light") > 0)
+        {
+            return "bg-" + background.Replace("light", "dark");
+        }
+        return "";
+    }
+}

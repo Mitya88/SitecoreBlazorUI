@@ -1,0 +1,34 @@
+﻿@page "/samples/messagepage"
+<ScApplicationHeader Text="SPEAK components in Blazor">
+    <h5 class="basic-white">Messages</h5>
+</ScApplicationHeader>
+<ScMessageBar>
+    <ScAlert Variant="warning" Text="This is a warning" />
+</ScMessageBar>
+<div class="page-content-section">
+    <div class="page-content">
+        <article class="p-4">
+            <div class="card mb-3 p-4">
+                <div class="card-block">
+                    <h4 class="card-title">Message page</h4>
+                    <ScMessageBar>
+                        <ScAlert Variant="danger" Text="Hello" />
+                    </ScMessageBar>
+                    <ScMessageBar>
+                        <ScAlert Variant="warning" Text="Hello" />
+                    </ScMessageBar>
+                    <ScMessageBar>
+                        <ScAlert Variant="info" Text="Hello" />
+                    </ScMessageBar>
+                    <ScMessageBar>
+                        <ScAlert Variant="success" Text="Hello" />
+                    </ScMessageBar>
+                </div>
+            </div>
+           
+        </article>
+    </div>
+</div>
+@code {
+
+}

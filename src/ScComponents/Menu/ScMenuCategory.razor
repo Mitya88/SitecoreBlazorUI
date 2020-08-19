@@ -1,0 +1,51 @@
+﻿<button class="menu-category" type="button" @onclick="ChangeState">
+   <ScIcon Icon="@Icon"></ScIcon>
+    <span>@CategoryTitle</span>
+    @if (this._isOpened)
+    {
+        <ScIcon Icon="navigate_down"></ScIcon>
+    }
+    else
+    {
+        <ScIcon Icon="navigate_up"></ScIcon>
+    }
+</button>
+<ul class="@(_isOpened ? "show" : "")">
+  @ChildContent
+</ul>
+
+@code {
+    [Parameter]
+    public RenderFragment ChildContent { get; set; }
+
+    [Parameter]
+    public string CategoryTitle { get; set; }
+
+    [Parameter]
+    public string Icon { get; set; }
+
+    [Parameter]
+    public bool IsOpened { get; set; }
+
+    private bool _isOpened { get; set; }
+
+    protected override void OnAfterRender(bool firstRender)
+    {
+        if (firstRender)
+        {
+            _isOpened = IsOpened;
+            StateHasChanged();
+        }
+    }
+    private void ChangeState()
+    {
+        if (_isOpened)
+        {
+            this._isOpened = false;
+        }
+        else
+        {
+            this._isOpened = true;
+        }
+    }
+}

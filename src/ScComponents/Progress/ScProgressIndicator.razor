@@ -1,0 +1,21 @@
+﻿<div class="progress-indicator-panel @(Show? "show" : "")">
+    <div class="pip-overlay">
+        <div class="pip-loader">
+            <div class="pip-square-1"></div>
+            <div class="pip-square-2"></div>
+            <div class="pip-square-3"></div>
+            <div class="pip-square-4"></div>
+            <div class="pip-square-5"></div>
+            <div class="pip-square-6"></div>
+            <div class="pip-square-7"></div>
+            <div class="pip-square-8"></div>
+            <div class="pip-square-9"></div>
+        </div>
+    </div>
+    <div class="pip-background"></div>
+</div>
+
+@code {
+    [Parameter]
+    public bool Show { get; set; }    
+}

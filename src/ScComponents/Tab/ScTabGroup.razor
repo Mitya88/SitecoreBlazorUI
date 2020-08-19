@@ -1,0 +1,54 @@
+﻿
+<CascadingValue Value="this">
+
+    <ul class="nav nav-tabs-@Variant">
+        @foreach (ScTab tabPage in Pages)
+        {
+            <li class="nav-item">
+                <a class="nav-link @GetButtonClass(tabPage)" @onclick=@( () => ActivatePage(tabPage) )>
+                    @tabPage.Text
+                </a>
+            </li>
+        }
+
+       
+    </ul>
+    
+    <div class="tab-content">
+
+        @ChildContent
+    </div>
+</CascadingValue>
+@code {
+    // Next line is needed so we are able to add <TabPage> components inside
+    [Parameter]
+    public RenderFragment ChildContent { get; set; }
+
+    [Parameter]
+    public string Variant { get; set; }
+
+    public ScTab ActivePage { get; set; }
+    List<ScTab> Pages = new List<ScTab>();
+    internal void AddPage(ScTab tabPage)
+    {
+        Pages.Add(tabPage);
+        if (Pages.Count == 1)
+            ActivePage = tabPage;
+        StateHasChanged();
+    }
+
+    string GetButtonClass(ScTab page)
+    {
+        if (page.IsDisabled)
+        {
+            return "disabled";
+        }
+
+        return page == ActivePage ? "active" : "";
+    }
+    void ActivatePage(ScTab page)
+    {
+        ActivePage = page;
+    }
+
+}

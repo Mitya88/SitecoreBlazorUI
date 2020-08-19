@@ -1,0 +1,9 @@
+﻿<nav>    
+    <nav class="menu">
+        @ChildContent
+    </nav>
+</nav>
+@code {
+    [Parameter]
+    public RenderFragment ChildContent { get; set; }
+}

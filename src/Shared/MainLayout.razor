@@ -1,0 +1,43 @@
+﻿@inherits LayoutComponentBase
+
+<div class="page">
+    <!-- sc page -->
+    <div class="page-header">
+        <!-- sc global header -->
+        <ScGlobalHeader PageTitle="This is the page title" ApplicationTitle="SitecoreBlazorUI">
+            <ScGlobalLogo RedirectUrl="/home/" />
+        </ScGlobalHeader>
+        <!-- / sc global header -->
+    </div>
+    <div class="page-app">
+        <aside class="page-nav">
+            <ScMenu>
+                <ScMenuCategory CategoryTitle="First" IsOpened="true" Icon="cake_slice">
+                    <ScMenuItem Href="/"> Home</ScMenuItem>
+                    <ScMenuItem Href="samples/textpage">Headings</ScMenuItem>
+                    <ScMenuItem Href="samples/tabpage">Tabs</ScMenuItem>
+                    <ScMenuItem Href="samples/tablepage">Table</ScMenuItem>
+                    <ScMenuItem Href="samples/actionbarpage">Action Bar</ScMenuItem>
+                    <ScMenuItem Href="samples/buttonpage">Buttons</ScMenuItem>
+                    <ScMenuItem Href="samples/progresspage">Progress bar & indicator</ScMenuItem>
+                    <ScMenuItem Href="samples/messagepage">Message bar & Alerts</ScMenuItem>
+                    <ScMenuItem Href="samples/expanderpage">Expanders</ScMenuItem>
+                    <ScMenuItem Href="samples/backgroundcolorspage">Background Colors</ScMenuItem>
+                    <ScMenuItem Href="samples/textcolorspage">Text Colors</ScMenuItem>
+                    <ScMenuItem Href="samples/iconpage">Icons</ScMenuItem>
+                </ScMenuCategory>
+
+                <ScMenuCategory CategoryTitle="Closed by Default" IsOpened="false" Icon="about">
+                    <ScMenuItem Href="samples/textcolorspage">Text Colors</ScMenuItem>
+                </ScMenuCategory>
+            </ScMenu>
+        </aside>
+        <main class="page-main">
+
+            
+
+            @Body
+        </main>
+
+    </div>
+</div><!-- /sc-spage -->

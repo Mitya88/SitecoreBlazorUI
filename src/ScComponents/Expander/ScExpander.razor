@@ -1,0 +1,60 @@
+﻿<div class="expander card @(this._isOpened ? "show": "")">
+    <div class="card-header" @onclick="ChangeState">
+    <span class="card-header-icon">
+        <ScIcon Icon="@Icon"/>
+        </span>
+    <h5>@HeaderTitle</h5>
+    <button class="btn btn-icon-only btn-chromeless" type="button">
+        @if (this._isOpened)
+        {
+            <ScIcon Icon="navigate_down" Size="s" />
+        }
+        else
+        {
+            <ScIcon Icon="navigate_up" Size="s" />
+        }
+    </button>
+    </div>
+    <div class="card-block">
+    <div class="p-3">
+        @ChildContent
+    </div>
+        </div>
+</div>
+
+@code {
+    [Parameter]
+    public string Icon { get; set; }
+
+    [Parameter]
+    public string HeaderTitle { get; set; }
+
+    [Parameter]
+    public RenderFragment ChildContent { get; set; }
+
+    [Parameter]
+    public bool IsOpened { get; set; }
+
+    private bool _isOpened { get; set; }
+
+    protected override void OnAfterRender(bool firstRender)
+    {
+        if (firstRender)
+        {
+            _isOpened = IsOpened;
+            StateHasChanged();
+        }
+    }
+    private void ChangeState()
+    {
+        if (_isOpened)
+        {
+            this._isOpened = false;
+        }
+        else
+        {
+            this._isOpened = true;
+        }
+    }
+
+}

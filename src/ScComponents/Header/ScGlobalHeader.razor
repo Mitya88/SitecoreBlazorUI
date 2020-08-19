@@ -1,0 +1,17 @@
+﻿<header class="global-header">   
+    <div class="gh-content">
+         @ChildContent
+        <div class="gh-app">@ApplicationTitle</div>
+        <div class="gh-account"></div>
+    </div>
+</header>
+@code {
+    [Parameter]
+    public string PageTitle { get; set; }
+
+    [Parameter]
+    public string ApplicationTitle { get; set; }
+
+    [Parameter]
+    public RenderFragment ChildContent { get; set; }
+}

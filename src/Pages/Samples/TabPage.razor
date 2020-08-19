@@ -1,0 +1,63 @@
+﻿@page "/samples/tabpage"
+<ScApplicationHeader Text="SPEAK components in Blazor">
+    <h5 class="basic-white">Tabs</h5>
+</ScApplicationHeader>
+<div class="page-content-section">
+    <div class="page-content">
+        <article class="p-4 page-article">
+            <div class="card mb-3 p-3">
+                <div class="card-block">
+                    <ScTabGroup Variant="switch">
+                        <ScTab Text="Tab 1">
+                            <h1>The first tab</h1>
+                        </ScTab>
+                        <ScTab Text="Tab 2">
+                            <h1>The second tab</h1>
+                        </ScTab>
+                        <ScTab Text="Tab 3" IsDisabled="true">
+                            <h1>Disabled by default</h1>
+                        </ScTab>
+                    </ScTabGroup>
+                </div>
+            </div>
+            <div class="card mb-3 p-3">
+                <div class="card-block">
+
+                    <ScTabGroup Variant="progressive">
+                        <ScTab Text="Tab 1">
+                            <h1>The first tab</h1>
+                        </ScTab>
+                        <ScTab Text="Tab 2">
+                            <h1>The second tab</h1>
+                        </ScTab>
+                        <ScTab Text="Tab 3">
+                            <h1>The third tab</h1>
+                        </ScTab>
+                    </ScTabGroup>
+                </div>
+            </div>
+            <div class="card mb-3 p-3">
+                <div class="card-block">
+
+                    <ScTabGroup Variant="sub">
+                        <ScTab Text="Tab 1">
+                            <h1>The first tab</h1>
+                        </ScTab>
+                        <ScTab Text="Tab 2">
+                            <h1>The second tab</h1>
+                        </ScTab>
+                        <ScTab Text="Tab 3">
+                            <h1>The third tab</h1>
+                        </ScTab>
+                    </ScTabGroup>
+                </div>
+            </div>
+        </article>
+    </div>
+    <aside></aside>
+</div>
+
+
+@code {
+
+}

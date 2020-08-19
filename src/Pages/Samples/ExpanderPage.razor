@@ -1,0 +1,39 @@
+﻿@page "/samples/expanderpage"
+<ScApplicationHeader Text="SPEAK components in Blazor">
+    <h5 class="basic-white">Expanders</h5>
+</ScApplicationHeader>
+<div class="page-content-section">
+    <div class="page-content">
+        <article class="p-4">
+            <div class="card mb-3 p-4">
+                <div class="card-block">
+                    <h4 class="card-title">Expanders page</h4>
+                    <ScExpander HeaderTitle="Messages" IsOpened="true">
+                        <ScMessageBar>
+                            <ScAlert Variant="danger" Text="Hello" />
+                        </ScMessageBar>
+                        <ScMessageBar>
+                            <ScAlert Variant="warning" Text="Hello" />
+                        </ScMessageBar>
+                        <ScMessageBar>
+                            <ScAlert Variant="info" Text="Hello" />
+                        </ScMessageBar>
+                        <ScMessageBar>
+                            <ScAlert Variant="success" Text="Hello" />
+                        </ScMessageBar>
+                    </ScExpander>
+
+                    <ScExpander HeaderTitle="Closed by Default" IsOpened="false">
+                        <h2>closed</h2>
+                    </ScExpander>
+                   
+                </div>
+            </div>
+
+        </article>
+    </div>
+</div>
+
+@code {
+
+}
