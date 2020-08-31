@@ -213,3 +213,26 @@ Sample Page: http://localhost:5000/samples/tablepage
 ```
 
 ![Table](screenshots/table.png)
+
+#### ScModal
+ScModal allows to create and display modal dialogs in different tyles
+
+Sample Page: http://localhost:5000/samples/modalpage
+
+
+```
+<ScModal @ref="Modal7" 
+    DialogType="ScModal.ModalType.Error" 
+    ModalTitle="Click modal" 
+    DialogSize="ScModal.ModalSize.Large" 
+    ShowBackdrop="true" 
+    CloseBtnText="Cancel" 
+    BtnText="Save" 
+    OnBtnClickCallback="ClickTest">
+        <h4>Lorem ipsum</h4>
+        Modal with backdrop.
+</ScModal>
+
+```
+
+![Modal](screenshots/modal.png)

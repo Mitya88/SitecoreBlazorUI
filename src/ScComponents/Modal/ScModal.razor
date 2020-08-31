@@ -1,0 +1,165 @@
+﻿<div class="modal fade @ShowClass @ModalClass">
+    <div class="modal-dialog @SizeClass  @MaximizedClass" role="document">       
+        <div class="modal-content">
+            <div class="modal-header">
+                <div class="row dw-header-row">
+                    <div class="col-8 col-sm-10 dw-title">
+                        <h4>@ModalTitle</h4>
+                    </div>
+                    <div class="col-4 col-sm-2 dw-actions">
+                        @if (!IsMaximized)
+                        {
+                            <button type="button" class="btn btn-link btn-icon-only" aria-label="Maximize" @onclick="Maximize">
+                                <i class="si si-s si-dialog_maximize" aria-hidden="true"></i>
+                            </button>
+                        }
+                        else
+                        {
+                            <button type="button" class="btn btn-link btn-icon-only" aria-label="Minimize" @onclick="Minimize">
+                                <i class="si si-s si-dialog_restore" aria-hidden="true"></i>
+                            </button>
+                        }
+
+                        <button type="button" class="btn btn-link btn-icon-only" aria-label="Close" @onclick="Close">
+                            <i class="si si-s si-dialog_close" aria-hidden="true"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-body">
+                <div class="dw-confirmation">
+                    <div class="dw-confirmation-body">
+                        <i class="si si-xl si-@TypeClass"></i>
+                        <div class="dw-confirmation-content">
+                            @ChildContent
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" @onclick="OnBtnClickCallback">@BtnText</button>
+                <button type="button" class="btn btn-secondary" @onclick="Close">@CloseBtnText</button>
+            </div>
+        </div>
+    </div>
+</div>
+@if (ShowBackdrop && ShowClass.Equals("show"))
+{
+ <div class="modal-backdrop fade show d-block"></div>
+}
+
+@code {
+
+    [Parameter]
+    public bool ShowBackdrop { get; set; }
+
+    [Parameter]
+    public ModalType DialogType {get; set;}
+
+    [Parameter]
+    public ModalSize DialogSize { get; set; }
+
+    [Parameter]
+    public string ModalTitle { get; set; }
+
+    [Parameter]
+    public RenderFragment ChildContent { get; set; }
+
+    [Parameter]
+    public string CloseBtnText { get; set; }
+
+    [Parameter]
+    public string BtnText { get; set; }
+
+    [Parameter]
+    public EventCallback<MouseEventArgs> OnBtnClickCallback { get; set; }
+
+    protected override void OnInitialized()
+    {
+        ShowClass = "";
+        if (DialogType == ModalType.Error)
+        {
+            TypeClass = "error";
+        }
+        else if (DialogType == ModalType.Warning)
+        {
+            TypeClass = "warning";
+        }
+        else
+        {
+            TypeClass = "information2";
+        }
+
+        if (DialogSize == ModalSize.Large)
+        {
+            SizeClass = "modal-lg";
+        }
+        else if (DialogSize == ModalSize.Small)
+        {
+            SizeClass = "modal-sm";
+        }
+
+        if (string.IsNullOrEmpty(BtnText))
+        {
+            BtnText = "Ok";
+        }
+
+        if (string.IsNullOrEmpty(CloseBtnText))
+        {
+            CloseBtnText = "Close";
+        }
+
+    }
+    public string ModalClass { get; set; }
+    private string ShowClass { get; set; }
+    private string TypeClass { get; set; }
+    private string SizeClass { get; set; }
+
+    private string MaximizedClass { get; set; }
+
+    private bool IsMaximized { get; set; }
+
+    private void Maximize()
+    {
+        MaximizedClass = "modal-maximized";
+        IsMaximized = true;
+        StateHasChanged();
+    }
+
+    private void Minimize()
+    {
+        MaximizedClass = "";
+        IsMaximized = false;
+        StateHasChanged();
+    }
+
+    public void Open()
+    {
+        Console.Write("Miez");
+        ModalClass = "d-block";
+        ShowClass = "show";
+        MaximizedClass = "";
+        StateHasChanged();
+    }
+
+    public void Close()
+    {
+        ModalClass = "";
+        ShowClass = "";
+        StateHasChanged();
+    }
+
+    public enum ModalType
+    {
+        Error,
+        Warning,
+        Information
+    }
+
+    public enum ModalSize
+    {
+        Small,
+        Medium,
+        Large
+    }
+}

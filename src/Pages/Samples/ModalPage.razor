@@ -1,0 +1,97 @@
+﻿@page "/samples/modalpage"
+@inject IJSRuntime JSRuntime;
+<ScApplicationHeader Text="SPEAK components in Blazor">
+    <h5 class="basic-white">Modals</h5>
+</ScApplicationHeader>
+<div class="page-content-section">
+    <div class="page-content">
+        <article class="p-4">
+
+            <div class="card mb-3 p-4">
+                <div class="card-block">
+                    <h4 class="card-title">Modal types</h4>
+                    <ScButtonGroup>
+                        <ScButton ButtonType="primary" Text="Information" OnClickCallback="()=> Modal1.Open()" />
+                        <ScButton ButtonType="primary" Text="Warning" OnClickCallback="()=> Modal2.Open()" />
+                        <ScButton ButtonType="primary" Text="Error" OnClickCallback="()=> Modal3.Open()" />
+                    </ScButtonGroup>
+
+
+                </div>
+            </div>
+
+            <div class="card mb-3 p-4">
+                <div class="card-block">
+                    <h4 class="card-title">Modal sizes</h4>
+                    <ScButtonGroup>
+                        <ScButton ButtonType="primary" Text="Small" OnClickCallback="()=> Modal4.Open()" />
+                        <ScButton ButtonType="primary" Text="Medium" OnClickCallback="()=> Modal5.Open()" />
+                        <ScButton ButtonType="primary" Text="Large" OnClickCallback="()=> Modal6.Open()" />
+                    </ScButtonGroup>
+                </div>
+            </div>
+
+            <div class="card mb-3 p-4">
+                <div class="card-block">
+                    <h4 class="card-title">Modal with action</h4>
+                    <ScButtonGroup>
+                        <ScButton ButtonType="primary" Text="Open Modal" OnClickCallback="()=> Modal7.Open()" />
+                    </ScButtonGroup>
+                </div>
+            </div>
+
+
+
+            <ScModal @ref="Modal1" DialogType="ScModal.ModalType.Information" ModalTitle="Info modal" BtnText="Save" CloseBtnText="Close">
+                <h4>Modal1</h4>
+                Modal body text goes here.
+            </ScModal>
+            <ScModal @ref="Modal2" DialogType="ScModal.ModalType.Warning" ModalTitle="Warning modal">
+                <h4>Modal2</h4>
+                Modal body text goes here.
+            </ScModal>
+            <ScModal @ref="Modal3" DialogType="ScModal.ModalType.Error" ModalTitle="Error modal">
+                <h4>Lorem ipsum</h4>
+                Modal body text goes here.
+            </ScModal>
+
+
+            <ScModal @ref="Modal4" DialogType="ScModal.ModalType.Information" ModalTitle="Small modal" DialogSize="ScModal.ModalSize.Small">
+                <h4>Modal1</h4>
+                Modal body text goes here.
+            </ScModal>
+            <ScModal @ref="Modal5" DialogType="ScModal.ModalType.Warning" ModalTitle="Medium modal" DialogSize="ScModal.ModalSize.Medium">
+                <h4>Modal2</h4>
+                Modal body text goes here.
+            </ScModal>
+            <ScModal @ref="Modal6" DialogType="ScModal.ModalType.Error" ModalTitle="Larga modal" DialogSize="ScModal.ModalSize.Large">
+                <h4>Lorem ipsum</h4>
+                Modal body text goes here.
+            </ScModal>
+
+            <ScModal @ref="Modal7" DialogType="ScModal.ModalType.Error" ModalTitle="Click modal" DialogSize="ScModal.ModalSize.Large" ShowBackdrop="true" CloseBtnText="Cancel" BtnText="Save" OnBtnClickCallback="ClickTest">
+                <h4>Lorem ipsum</h4>
+                Modal with backdrop.
+            </ScModal>
+        </article>
+    </div>
+    <aside></aside>
+</div>
+@code {
+    private ScModal Modal1 { get; set; }
+    private ScModal Modal2 { get; set; }
+    private ScModal Modal3 { get; set; }
+
+
+    private ScModal Modal4 { get; set; }
+    private ScModal Modal5 { get; set; }
+    private ScModal Modal6 { get; set; }
+
+    private ScModal Modal7 { get; set; }
+
+    private async Task ClickTest()
+    {
+        await JSRuntime.InvokeAsync<object>("alert", "Modal Save Btn is clicked!");
+        Modal7.Close();
+    }
+}
