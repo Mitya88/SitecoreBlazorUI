@@ -273,4 +273,4 @@ Sample Page (static): http://localhost:5000/samples/breadcrumbpage
 
 ```
 
-![Breadcrumb](C:/git/SitecoreBlazorUI/screenshots/breadcrumb.png)
+![Breadcrumb](screenshots/breadcrumb.png)
