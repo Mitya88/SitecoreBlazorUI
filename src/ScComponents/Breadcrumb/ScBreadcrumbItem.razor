@@ -1,0 +1,11 @@
+﻿
+<NavLink class="breadcrumb-item" ActiveClass="" href="@Href">
+    @ChildContent
+</NavLink>
+@code {
+    [Parameter]
+    public RenderFragment ChildContent { get; set; }
+
+    [Parameter]
+    public string Href { get; set; }
+}

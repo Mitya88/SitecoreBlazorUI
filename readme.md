@@ -236,3 +236,41 @@ Sample Page: http://localhost:5000/samples/modalpage
 ```
 
 ![Modal](screenshots/modal.png)
+
+#### ScBreadcrumbs
+ScBreadcrumbs allows to create and display static and dynamic (based on the request path) breadcrumbs on the page
+
+Sample Page (dynamic): http://localhost:5000/samples/breadcrumbpage/dynamic
+
+Sample Page (static): http://localhost:5000/samples/breadcrumbpage
+
+**Static Sample**
+
+(Note: You have to ScBreadcrumb component within the **ScApplicationHeader** component)
+
+```
+<ScApplicationHeader Text="SPEAK components in Blazor">
+    <h5 class="basic-white">Static Breadcrumb</h5>
+    <ScBreadcrumb>
+        <ScBreadcrumbItem Href="/">Home</ScBreadcrumbItem>
+        <ScBreadcrumbItem Href="/">Level1</ScBreadcrumbItem>
+        <ScBreadcrumbItem Href="/">Level2</ScBreadcrumbItem>
+    </ScBreadcrumb>
+</ScApplicationHeader>
+
+```
+
+**Dynamic Sample**
+
+(Note: If **IsDynamic** property set to 'true', any child element of **ScBreadcrum** component will be ignored and wont be rendered)
+
+```
+<ScApplicationHeader Text="SPEAK components in Blazor">
+    <h5 class="basic-white">Dynamic Breadcrumb</h5>
+    <ScBreadcrumb IsDynamic="true" RootItemTitle="Index">
+    </ScBreadcrumb>
+</ScApplicationHeader>
+
+```
+
+![Breadcrumb](C:/git/SitecoreBlazorUI/screenshots/breadcrumb.png)

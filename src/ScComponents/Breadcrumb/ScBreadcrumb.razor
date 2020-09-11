@@ -1,0 +1,57 @@
+﻿@inject NavigationManager _navigationManager
+<nav class="breadcrumb">
+
+    @if (this.IsDynamic)
+    {
+        <ScBreadcrumbItem Href="/">@RootItemTitle</ScBreadcrumbItem>
+        @foreach (var path in paths.Select((value, i) => (value, i)))
+        {
+            if (path.i == paths.Count())
+            {                
+                <ScBreadcrumbItem Href="@(String.Join("/", paths))">@path.value.Replace("_", " ")</ScBreadcrumbItem>
+            }
+            else
+            {
+                <ScBreadcrumbItem Href="@(GetPaths(paths, path.i))">@path.value.Replace("_", " ")</ScBreadcrumbItem>
+            }
+        }
+    }
+    else
+    {
+        @ChildContent
+    }
+</nav>
+
+@code {
+    [Parameter]
+    public RenderFragment ChildContent { get; set; }
+
+    [Parameter]
+    public bool IsDynamic { get; set; }
+
+    [Parameter]
+    public string RootItemTitle { get; set; }
+
+    string[] paths;
+
+    protected override async Task OnInitializedAsync()
+    {
+        BuildBreadcrumbsAsync();
+        await base.OnInitializedAsync();
+    }
+
+    private string GetPaths(string[] paths, int index)
+    {
+        return String.Join("/", paths.Take(index+1));
+    }
+
+
+    private void BuildBreadcrumbsAsync()
+    {
+        string uri = _navigationManager.Uri.Replace(_navigationManager.BaseUri, "").Trim();
+
+        paths = String.IsNullOrEmpty(uri) ? new string[] { } : uri.Split('/');
+        StateHasChanged();
+    }
+
+}
