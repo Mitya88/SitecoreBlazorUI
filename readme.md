@@ -10,7 +10,7 @@ Please feel free to contribute or raise an issue if you have any!
 
 # Prerequisites
 - You need to have a Visual Studio 2019 installed
-- You need to have the .NET SDK 3.1 installed
+- You need to have the .NET 5 installed
 
 ## Setting up the project
 - Clone this repository
@@ -18,8 +18,19 @@ Please feel free to contribute or raise an issue if you have any!
 - Open the application in your preferred browser on **http://localhost:5000**
 
 ## Publishing to Sitecore
-- You can follow the  instructions from this [blog post](https://medium.com/@mitya_1988/using-blazor-for-sitecore-custom-applications-1618fb11f301)
-
+- Find **index.aspx** and check  ```<base href="/sitecore/shell/client/Applications/sitecoreblazorui/">``` tag in the **head** section
+- Create the same folder structure under your Sitecore Instance. e.g c:\<sitecoreWebRoot>\sitecore\shell\client\applications\sitecoreblazorui
+- In Visual Studio, right-click on the project name and select Publish. Let’s pick the **folder** option and click Next/Finish
+- Visual Studio publishes the files by default to c:\<pathToProjectFolder>\bin\Release\net5.0\browser-wasm\publish.
+- Find the **wwwroot** folder within this folder. c:\<pathToProjectFolder>\bin\Release\net5.0\browser-wasm\publish\wwwroot\
+- Your folder should look like this:
+- ![Folder](screenshots/folder.png)
+- Copy the content to the previously created folder under your Sitecore instance
+- Add the following mimetypes to your site in IIS
+  - FileExtension = .wasm Mime Type "application/wasm"
+  - FileExtension = .dat Mime Type "application/octet-stream"
+  - FileExtension = .blat Mime Type "application/octet-stream"
+- Open the https://{sitecoreInstanceUrl}/sitecore/shell/client/Applications/sitecoreblazorui/ and enjoy it
 ### Re-written components
 Note: The following components may not have the full functionality from SPEAK3
 

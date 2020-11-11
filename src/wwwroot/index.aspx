@@ -17,9 +17,7 @@
 </head>
 
 <body>
-    <app>Loading...</app>
-
-   
+ <div id="app">Loading...</div>
     <script src="_framework/blazor.webassembly.js"></script>
 </body>
 
