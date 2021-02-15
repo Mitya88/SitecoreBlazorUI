@@ -1,0 +1,43 @@
+﻿@using SitecoreBlazorUI.Application.Interfaces
+@inject ISitecoreContextService sitecoreContextService
+@inject ILogoutService logoutService
+@inject NavigationManager uriHelper;
+@inject IJSRuntime JSRuntime
+<div class="account-info">
+    <div class="account-texts">
+        <div class="account-action">
+            <a @onclick="Logout">Log out</a>
+        </div>
+        <div class="account-name">
+            @AccountName
+        </div>
+    </div>
+    <div class="account-image">
+        <img src="@AccountUrl" alt="Administrator">
+    </div>
+</div>
+
+@code {
+    protected override async Task OnInitializedAsync()
+    {
+        base.OnInitialized();
+
+        var body = await this.sitecoreContextService.GetContextAsync();
+
+        AccountName = body.User.LocalName;
+        AccountUrl = body.User.Profile.Portrait;
+
+    }
+
+    private async void Logout()
+    {
+        var cookie = await JSRuntime.InvokeAsync<string>("methods.GetCookie", "XSRF-TOKEN");
+        await this.logoutService.LogoutAsync(cookie);
+        uriHelper.NavigateTo(uriHelper.BaseUri, forceLoad: true);
+    }
+
+    public string AccountName { get; set; }
+
+    public string AccountUrl { get; set; }
+
+}

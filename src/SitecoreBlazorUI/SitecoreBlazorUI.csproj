@@ -10,4 +10,12 @@
     <PackageReference Include="System.Net.Http.Json" Version="5.0.0" />
   </ItemGroup>
 
+<ItemGroup>
+  <Folder Include="Models\" />
+</ItemGroup>
+
+<ItemGroup>
+  <ProjectReference Include="..\SitecoreBlazorUI.Application\SitecoreBlazorUI.Application.csproj" />
+</ItemGroup>
+
 </Project>

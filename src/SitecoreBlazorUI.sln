@@ -3,12 +3,14 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.30406.217
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SitecoreBlazorUI", "SitecoreBlazorUI.csproj", "{367104EE-C032-41FA-A1FC-504FC9CF39D6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SitecoreBlazorUI", "SitecoreblazorUI\SitecoreBlazorUI.csproj", "{367104EE-C032-41FA-A1FC-504FC9CF39D6}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "items", "items", "{94A9B77F-F360-45BA-B714-3E8DD767D623}"
 	ProjectSection(SolutionItems) = preProject
 		..\readme.md = ..\readme.md
 	EndProjectSection
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SitecoreBlazorUI.Application", "SitecoreBlazorUI.Application\SitecoreBlazorUI.Application.csproj", "{A0C2C8BF-28B8-4CFF-88DF-AB0326AF8C2B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -20,6 +22,10 @@ Global
 		{367104EE-C032-41FA-A1FC-504FC9CF39D6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{367104EE-C032-41FA-A1FC-504FC9CF39D6}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{367104EE-C032-41FA-A1FC-504FC9CF39D6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A0C2C8BF-28B8-4CFF-88DF-AB0326AF8C2B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A0C2C8BF-28B8-4CFF-88DF-AB0326AF8C2B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A0C2C8BF-28B8-4CFF-88DF-AB0326AF8C2B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A0C2C8BF-28B8-4CFF-88DF-AB0326AF8C2B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

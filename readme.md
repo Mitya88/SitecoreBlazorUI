@@ -17,7 +17,18 @@ Please feel free to contribute or raise an issue if you have any!
 - navigate into the src folder and type in the command prompt the following command: '**dotnet run**'
 - Open the application in your preferred browser on **http://localhost:5000**
 
-## Publishing to Sitecore
+## Running in Docker
+- Clone this repository
+- Call .\init.ps1 with **LicenseXmlPath** parameter
+- Run **docker-compose up -d** command
+- Open the cm site and login to sitecore (https://cm.blazorui.localhost/sitecore/login/)
+- Open the https://cm.blazorui.localhost/sitecore/shell/client/Applications/sitecoreblazorui/ and browse the application
+- After modifing the code, call .\deploy.ps1. This script will deploy your latest changes into the container
+- 
+## Local Setup known issues
+- Item Serialization is not enabled yet (No Shortcut is added to the Launchpad)
+
+## Publishing to Sitecore (In case of non containerized environment)
 - Find **index.aspx** and check  ```<base href="/sitecore/shell/client/Applications/sitecoreblazorui/">``` tag in the **head** section
 - Create the same folder structure under your Sitecore Instance. e.g c:\<sitecoreWebRoot>\sitecore\shell\client\applications\sitecoreblazorui
 - In Visual Studio, right-click on the project name and select Publish. Let’s pick the **folder** option and click Next/Finish
