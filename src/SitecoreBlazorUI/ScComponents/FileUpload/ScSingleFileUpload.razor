@@ -1,0 +1,109 @@
+﻿<div class="uploader">
+    <p>Drag and drop file here</p>
+    <p>or</p>
+    <div class="custom-file">
+        <InputFile OnChange="OnInputFileChange" class="d-none" id="customFile"/>
+        <label class="btn btn-secondary" for="customFile">Browse for media file</label>
+    </div>
+</div>
+
+<div class="uploader-info">
+    <aside class="uploader-info-preview">
+        
+    @if (string.IsNullOrEmpty(imageDataUrl))
+    { 
+        <div class="uploader-info-preview-container">
+            <i class="si si-document_empty si-xxl basic-x-dark"></i>
+        </div>
+    }
+    else
+    {
+        <div class="uploader-info-preview-container">
+            <img src="@imageDataUrl" />
+        </div>
+        <br/>
+    }
+
+</aside>
+    <div class="uploader-info-body">
+        <div class="form-group">
+            <label for="file-name">Name</label>
+            <input class="form-control" @bind="name">
+        </div>
+        <div class="form-group">
+            <label for="file-description">Description</label>
+            <textarea class="form-control" id="file-description" rows="3"></textarea>
+        </div>
+        <div class="form-group">
+            <label for="file-alt">Alternate Text</label>
+            <input class="form-control" id="file-alt">
+        </div>
+    </div>
+    <aside class="uploader-info-context">
+
+        <div class="uploader-info-context-header">
+            @if (!string.IsNullOrEmpty(imageDataUrl))
+            {
+                <button class="btn btn-secondary" @onclick="RemoveFile">Remove</button>
+            }
+        </div>
+        <div class="uploader-info-context-body">
+            @*<p>Upload completed</p>
+            <div class="progress">
+                <div class="progress-bar" role="progressbar" style="width: 40%;" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100">
+                </div>
+            </div>*@
+            <p>File size:  @size</p>
+        </div>
+        <p class="uploader-info-context-footer">
+            @format
+        </p>
+    </aside>
+</div>
+
+@code {
+
+    void RemoveFile()
+    {
+        imageDataUrl = string.Empty;
+        size = string.Empty;
+        format = string.Empty;
+        name = string.Empty;
+    }
+    ElementReference textFileName;
+
+    string imageDataUrl;
+    string format;
+    string size;
+    string name;
+    async Task OnInputFileChange(InputFileChangeEventArgs e)
+    {
+        if (!e.File.ContentType.StartsWith("image"))
+        {
+            return;
+        }
+
+        size = BytesToString(e.File.Size);
+        format = e.File.ContentType;
+        var imageFile = e.File;
+        name = e.File.Name;
+        var resizedImageFile = await imageFile.RequestImageFileAsync(format, 128, 128);
+        var buffer = new byte[resizedImageFile.Size];
+        await resizedImageFile.OpenReadStream().ReadAsync(buffer);
+        imageDataUrl = $"data:{format};base64,{Convert.ToBase64String(buffer)}";
+
+        // TODO: Implement your image upload here
+        // For more information, see: https://code-maze.com/blazor-webassembly-file-upload/
+    }
+
+    static String BytesToString(long byteCount)
+    {
+        string[] suf = { "B", "KB", "MB", };
+        if (byteCount == 0)
+            return "0" + suf[0];
+        long bytes = Math.Abs(byteCount);
+        int place = Convert.ToInt32(Math.Floor(Math.Log(bytes, 1024)));
+        double num = Math.Round(bytes / Math.Pow(1024, place), 1);
+        return (Math.Sign(byteCount) * num).ToString() + suf[place];
+    }
+}

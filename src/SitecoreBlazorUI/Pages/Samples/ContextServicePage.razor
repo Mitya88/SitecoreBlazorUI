@@ -1,0 +1,51 @@
+﻿@page "/samples/contextservicepage"
+@using SitecoreBlazorUI.Application.Interfaces
+@inject ISitecoreContextService sitecoreContextService
+<ScApplicationHeader Text="SPEAK components in Blazor">
+    <h5 class="basic-white">Context Service Sample</h5>
+</ScApplicationHeader>
+<ScTable>
+    <thead>
+        <tr>
+         
+            <th>Property</th>
+            <th>Value</th>
+        </tr>
+    </thead>
+    @if (ContextData != null)
+    {
+    <tbody>
+        <tr>
+            <td>Context Content Database</td>
+            <td>@ContextData.ContentDatabase.Name</td>
+        </tr>
+        <tr>
+            <td>Context Culture Info</td>
+            <td>@ContextData.Culture.Name - @ContextData.Culture.ThreeLetterISOLanguageName - @ContextData.Culture.TwoLetterISOLanguageName</td>
+        </tr>
+        <tr>
+            <td>Context Database</td>
+            <td>@ContextData.Database.Name</td>
+        </tr>
+        <tr>
+            <td>Context Language</td>
+            <td>@ContextData.Language.Name</td>
+        </tr>
+        <tr>
+            <td>Context User</td>
+            <td>@ContextData.User.LocalName - @ContextData.User.Name - @ContextData.User.Profile.FullName</td>
+        </tr>
+    </tbody>
+    }
+</ScTable>
+@code {
+    protected override async Task OnInitializedAsync()
+    {
+        base.OnInitialized();
+
+        ContextData = await this.sitecoreContextService.GetContextAsync();
+        StateHasChanged();
+    }
+
+    private Models.ContextApiResponse ContextData {get;set;}
+}

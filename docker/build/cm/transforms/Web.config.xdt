@@ -1,0 +1,33 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<configuration xmlns:xdt="http://schemas.microsoft.com/XML-Document-Transform">
+  <system.webServer>
+ <httpCompression xdt:Transform="Remove"/>
+ <httpCompression xdt:Transform="Insert">
+      <dynamicTypes>
+        <add mimeType="application/octet-stream" enabled="true" />
+        <add mimeType="application/wasm" enabled="true" />
+      </dynamicTypes>
+    </httpCompression>
+<staticContent  xdt:Transform="Remove"/>
+
+<staticContent  xdt:Transform="Insert">
+      <remove fileExtension=".blat" />
+      <remove fileExtension=".dat" />
+      <remove fileExtension=".dll" />
+      <remove fileExtension=".json" />
+      <remove fileExtension=".wasm" />
+      <remove fileExtension=".woff" />
+      <remove fileExtension=".woff2" />
+      <mimeMap fileExtension=".blat" mimeType="application/octet-stream" />
+      <mimeMap fileExtension=".dll" mimeType="application/octet-stream" />
+      <mimeMap fileExtension=".dat" mimeType="application/octet-stream" />
+      <mimeMap fileExtension=".json" mimeType="application/json" />
+      <mimeMap fileExtension=".wasm" mimeType="application/wasm" />
+      <mimeMap fileExtension=".woff" mimeType="application/font-woff" />
+      <mimeMap fileExtension=".woff2" mimeType="application/font-woff" />
+    </staticContent>
+    <httpProtocol>
+     
+    </httpProtocol>
+  </system.webServer>
+</configuration>
