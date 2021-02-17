@@ -2,7 +2,7 @@
 @using SitecoreBlazorUI.Application.Interfaces
 @inject ISitecoreContextService sitecoreContextService
 <ScApplicationHeader Text="SPEAK components in Blazor">
-    <h5 class="basic-white">Table</h5>
+    <h5 class="basic-white">Context Service Sample</h5>
 </ScApplicationHeader>
 <ScTable>
     <thead>
@@ -12,6 +12,8 @@
             <th>Value</th>
         </tr>
     </thead>
+    @if (ContextData != null)
+    {
     <tbody>
         <tr>
             <td>Context Content Database</td>
@@ -34,15 +36,16 @@
             <td>@ContextData.User.LocalName - @ContextData.User.Name - @ContextData.User.Profile.FullName</td>
         </tr>
     </tbody>
+    }
 </ScTable>
 @code {
-        protected override async Task OnInitializedAsync()
-        {
-            base.OnInitialized();
+    protected override async Task OnInitializedAsync()
+    {
+        base.OnInitialized();
 
-            var ContextData = await this.sitecoreContextService.GetContextAsync();
+        ContextData = await this.sitecoreContextService.GetContextAsync();
+        StateHasChanged();
+    }
 
-        }
-
-        private Models.ContextApiResponse ContextData {get;set;}
+    private Models.ContextApiResponse ContextData {get;set;}
 }
