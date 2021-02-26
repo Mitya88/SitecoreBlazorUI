@@ -4,9 +4,11 @@ ARG BASE_IMAGE
 ARG SPE_IMAGE
 ARG TOOLING_IMAGE
 ARG SOLUTION_IMAGE
+ARG MANAGEMENT_SERVICES_IMAGE
 
 FROM ${SOLUTION_IMAGE} as solution
 FROM ${TOOLING_IMAGE} as tooling
+FROM ${MANAGEMENT_SERVICES_IMAGE} AS management_services
 FROM ${SPE_IMAGE} as spe
 FROM ${BASE_IMAGE}
 
@@ -23,6 +25,9 @@ WORKDIR C:\inetpub\wwwroot
 # Add SPE module
 COPY --from=spe \module\cm\content .\
 
+
+# Copy the Sitecore Management Services Module
+COPY --from=management_services C:\module\cm\content C:\inetpub\wwwroot
 
 # Copy solution website files
 COPY --from=solution \artifacts\website\ .\
