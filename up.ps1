@@ -35,11 +35,6 @@ if ($LASTEXITCODE -ne 0) {
     Write-Error "Serialization push failed, see errors above."
 }
 
-dotnet sitecore publish
-if ($LASTEXITCODE -ne 0) {
-    Write-Error "Item publish failed, see errors above."
-}
-
 Write-Host "Opening site..." -ForegroundColor Green
 
 Start-Process https://cm.blazorui.localhost/sitecore/
