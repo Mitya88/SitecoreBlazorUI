@@ -20,13 +20,10 @@ Please feel free to contribute or raise an issue if you have any!
 ## Running in Docker
 - Clone this repository
 - Call .\init.ps1 with **LicenseXmlPath** parameter
-- Run **docker-compose up -d** command
+- Run **.\up.ps1** script (It will push sitecore items to Sitecore (shortcut item)
 - Open the cm site and login to sitecore (https://cm.blazorui.localhost/sitecore/login/)
 - Open the https://cm.blazorui.localhost/sitecore/shell/client/Applications/sitecoreblazorui/ and browse the application
 - After modifing the code, call .\deploy.ps1. This script will deploy your latest changes into the container
-- 
-## Local Setup known issues
-- Item Serialization is not enabled yet (No Shortcut is added to the Launchpad)
 
 ## Publishing to Sitecore (In case of non containerized environment)
 - Find **index.aspx** and check  ```<base href="/sitecore/shell/client/Applications/sitecoreblazorui/">``` tag in the **head** section
